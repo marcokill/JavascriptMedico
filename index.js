@@ -26,50 +26,50 @@ app.get("/", (req, res) => {
   res.send("Welcome to my first API with Node js!");
 });
 
-app.get("/books", (req, res) => {
+app.get("/medics", (req, res) => {
   const data = readData();
-  res.json(data.books);
+  res.json(data.medics);
 });
 
-app.get("/books/:id", (req, res) => {
+app.get("/medics/:id", (req, res) => {
   const data = readData();
   const id = parseInt(req.params.id);
-  const book = data.books.find((book) => book.id === id);
-  res.json(book);
+  const medic = data.medics.find((medic) => medic.id === id);
+  res.json(medic);
 });
 
-app.post("/books", (req, res) => {
+app.post("/medics", (req, res) => {
   const data = readData();
   const body = req.body;
-  const newBook = {
-    id: data.books.length + 1,
+  const newMedic = {
+    id: data.medics.length + 1,
     ...body,
   };
-  data.books.push(newBook);
+  data.medics.push(newMedic);
   writeData(data);
-  res.json(newBook);
+  res.json(newMedic);
 });
 
-app.put("/books/:id", (req, res) => {
+app.put("/medics/:id", (req, res) => {
   const data = readData();
   const body = req.body;
   const id = parseInt(req.params.id);
-  const bookIndex = data.books.findIndex((book) => book.id === id);
-  data.books[bookIndex] = {
-    ...data.books[bookIndex],
+  const medicIndex = data.medics.findIndex((medic) => medic.id === id);
+  data.medics[medicIndex] = {
+    ...data.medics[medicIndex],
     ...body,
   };
   writeData(data);
-  res.json({ message: "Book updated successfully" });
+  res.json({ message: "Medic updated successfully" });
 });
 
-app.delete("/books/:id", (req, res) => {
+app.delete("/medics/:id", (req, res) => {
   const data = readData();
   const id = parseInt(req.params.id);
-  const bookIndex = data.books.findIndex((book) => book.id === id);
-  data.books.splice(bookIndex, 1);
+  const medicIndex = data.medics.findIndex((medic) => medic.id === id);
+  data.medics.splice(medicIndex, 1);
   writeData(data);
-  res.json({ message: "Book deleted successfully" });
+  res.json({ message: "Medic deleted successfully" });
 });
 
 app.listen(3000, () => {
