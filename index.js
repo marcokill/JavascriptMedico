@@ -23,22 +23,22 @@ const writeData = (data) => {
 };
 
 app.get("/", (req, res) => {
-  res.send("Welcome to my first API with Node js!");
+  res.send("CRUD DE MEDICOS");
 });
 
-app.get("/medics", (req, res) => {
+app.get("/medicos", (req, res) => {
   const data = readData();
   res.json(data.medics);
 });
 
-app.get("/medics/:id", (req, res) => {
+app.get("/medicos/:id", (req, res) => {
   const data = readData();
   const id = parseInt(req.params.id);
   const medic = data.medics.find((medic) => medic.id === id);
   res.json(medic);
 });
 
-app.post("/medics", (req, res) => {
+app.post("/medicos", (req, res) => {
   const data = readData();
   const body = req.body;
   const newMedic = {
@@ -50,7 +50,7 @@ app.post("/medics", (req, res) => {
   res.json(newMedic);
 });
 
-app.put("/medics/:id", (req, res) => {
+app.put("/medicos/:id", (req, res) => {
   const data = readData();
   const body = req.body;
   const id = parseInt(req.params.id);
@@ -60,18 +60,18 @@ app.put("/medics/:id", (req, res) => {
     ...body,
   };
   writeData(data);
-  res.json({ message: "Medic updated successfully" });
+  res.json({ message: "Medico actualizado exitosamente" });
 });
 
-app.delete("/medics/:id", (req, res) => {
+app.delete("/medicos/:id", (req, res) => {
   const data = readData();
   const id = parseInt(req.params.id);
   const medicIndex = data.medics.findIndex((medic) => medic.id === id);
   data.medics.splice(medicIndex, 1);
   writeData(data);
-  res.json({ message: "Medic deleted successfully" });
+  res.json({ message: "Medico eliminado exitosamente" });
 });
 
-app.listen(3000, () => {
-  console.log("Server listening on port 3000");
+app.listen(8000, () => {
+  console.log("Servidor en ejecucion en el puerto 8000");
 });

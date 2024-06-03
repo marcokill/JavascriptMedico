@@ -2,15 +2,18 @@
     "medics": [
       {
         "id": 1,
-        "name": "Dr. John Doe",
-        "specialization": "Cardiology",
-        "yearsOfExperience": 10
+        "nombre": "Dr. Walter",
+        "especialidad": "Traumatologia",
+        "telefono":"1712770",
+        "imagen": "Walter.png"
+
       },
       {
         "id": 2,
         "name": "Dr. Jane Smith",
-        "specialization": "Neurology",
-        "yearsOfExperience": 8
+        "especialidad": "Neurologia",
+        "telefono": "64820551",
+        "imagen":"Jane.jpg"
       }
     ]
   }
